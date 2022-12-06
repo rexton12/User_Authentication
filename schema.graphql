@@ -1,0 +1,60 @@
+ schema {
+    query: Query
+    mutation: Mutation
+}
+
+ type Query {
+    list: employee!
+    find(id: ID!): employee!
+    }
+
+type employee {
+    id: ID!
+    username: String
+    first_name: String
+    last_name: String
+    gender: String
+    email: String!
+    password: String!
+    position: String
+    createdAt: String
+}
+
+type user_login {
+    email: String!
+    password: String!
+}
+
+type Mutation {
+    createEmployee(input:UserCreateInput): employee
+    User_login(input:User_auth): user_login
+    list_employee(input:Find_user): employee
+}
+
+
+type Payload {
+  token: String
+  user: employee
+}
+
+input UserCreateInput {
+    username: String!
+    first_name:String!
+    last_name:String!
+    position: String!
+    gender:String!
+    email:String!
+    password:String!
+}
+
+
+input Find_user {
+    first_name: String
+    last_name: String
+}
+
+input User_auth {
+    email:String!
+    password: String!
+}
+
